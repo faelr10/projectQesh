@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
+import { User } from "../../entities/User";
 
 export interface IUser{
-    
+
     id?: string;
 
     name: string;
@@ -15,14 +16,17 @@ export interface IUser{
 
 
 export interface IUserRepository { 
+    create(data:IUser): Promise< Error | User >
 
 }
 
-
 export interface IUserController {
+    create(req: Request, res: Response): Promise<void>;
+
 
 }
 
 export interface IUserService {
 
+    create(data:IUser): Promise< Error | User > 
 }
