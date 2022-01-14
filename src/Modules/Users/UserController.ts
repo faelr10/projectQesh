@@ -12,5 +12,24 @@ import { IUserController, IUserService } from "./structure";
 
     async create(req: Request, res: Response): Promise<void> {
         
+        const {name,CPF,email,phone} = req.body
+
+        if(!name || !CPF || !email || !phone ){
+            res.status(422).json({message:"All required fiels!"})
+        }
+
+        const user = await this.userService.create({
+            name,
+            CPF,
+            email,
+            phone
+        })
+
+        if(user instanceof Error){
+            res.status(409).json(user.message)
+        }
+
+        res.status(201).json(user)
+
     }
  }
