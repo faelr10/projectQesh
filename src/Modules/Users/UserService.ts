@@ -8,6 +8,16 @@ export default class UserService implements IUserService {
     ){}
 
     async create(data: IUser): Promise<Error | User> {
+
+        const { name, CPF, email, phone } = data
         
+        const user = await this.userRepository.create({
+            name,
+            CPF,
+            email,
+            phone
+        })
+
+        return user;
     }
 }
