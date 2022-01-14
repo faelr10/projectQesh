@@ -10,7 +10,20 @@ export default class UserRepository extends BaseRepository<User> implements IUse
       }
 
       async create(data: IUser): Promise<User | Error> {
-          
+        
+        const { name, CPF, email, phone } = data 
+
+        const user = await this.getRepo().create({
+          name,
+          CPF,
+          email,
+          phone
+        })
+
+        await this.getRepo().save(user)
+
+        return user
+
       }
 }
 
