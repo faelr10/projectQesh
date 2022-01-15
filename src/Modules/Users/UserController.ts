@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { ParamsDictionary } from "express-serve-static-core";
 import { ParsedQs } from "qs";
+import { User } from "../../entities/User";
 import { IUserController, IUserService } from "./structure";
 
  export default class UserController implements IUserController {
@@ -37,5 +38,20 @@ import { IUserController, IUserService } from "./structure";
         const find = await this.userService.find();
 
         res.json(find)
+    };
+
+    async findById(req: Request, res: Response): Promise<void> {
+        const { id } = req.params
+        const findId = await this.userService.findById(id)
+        
+         res.json(findId)
+    }
+
+    async delete(req: Request, res: Response): Promise<void> {
+        const { id } = req.params
+        await this.userService.delete(id)
+
+        
+         res.status(200).json({message: "Deleted User"})
     }
  }

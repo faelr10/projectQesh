@@ -28,6 +28,16 @@ export default class UserRepository extends BaseRepository<User> implements IUse
 
       async find(): Promise<object> {
           return await this.getRepo().find()
+      };
+
+      async findById(id: string):Promise<object>{
+        return await this.getRepo().findOne({where: { id }})
       }
+
+       async delete(id: string):Promise<object> {
+         return await this.getRepo().delete(id)
+         
+       };
+
 }
 
