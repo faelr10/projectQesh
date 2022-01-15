@@ -31,5 +31,11 @@ import { IUserController, IUserService } from "./structure";
 
         res.status(201).json(user)
 
+    };
+
+    async find(req: Request, res: Response): Promise <void>{
+        const find = await this.userService.find();
+
+        res.json(find)
     }
  }

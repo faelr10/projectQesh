@@ -24,6 +24,10 @@ export default class UserRepository extends BaseRepository<User> implements IUse
 
         return user
 
+      };
+
+      async find(): Promise<object> {
+          return await this.getRepo().find()
       }
 }
 

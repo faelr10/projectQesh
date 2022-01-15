@@ -19,5 +19,11 @@ export default class UserService implements IUserService {
         })
 
         return user;
+    };
+
+    async find(): Promise<object> {
+        const find = await this.userRepository.find()
+
+        return find
     }
 }
