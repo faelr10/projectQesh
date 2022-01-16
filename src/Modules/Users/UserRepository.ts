@@ -32,6 +32,18 @@ export default class UserRepository extends BaseRepository<User> implements IUse
 
       async findById(id: string):Promise<object>{
         return await this.getRepo().findOne({where: { id }})
+      };
+
+      async update(data: IUser): Promise<object> {
+        const { id , name, CPF, email, phone} = data
+
+          const user = await this.getRepo().update(id, {
+            name,
+            CPF,
+            email,
+            phone
+          });
+           return (user)
       }
 
        async delete(id: string):Promise<object> {

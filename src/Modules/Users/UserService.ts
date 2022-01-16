@@ -29,6 +29,13 @@ export default class UserService implements IUserService {
     async findById(id: string): Promise<object>{
         const findId = await this.userRepository.findById(id)
         return findId
+    };
+
+    async update(data: IUser): Promise<object> {
+        
+        const update = await this.userRepository.update(data)
+
+        return update
     }
 
     async delete(id: string ):Promise<void> {

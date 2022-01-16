@@ -45,6 +45,21 @@ import { IUserController, IUserService } from "./structure";
         const findId = await this.userService.findById(id)
         
          res.json(findId)
+    };
+
+    async update(req: Request, res: Response): Promise<void> {
+        const { id } = req.params
+        const {name, CPF, email, phone} = req.body
+        
+        const user = await this.userService.update({
+            id,
+            name,
+            CPF,
+            email,
+            phone
+        });
+
+        res.status(200).json({message: "alteração concluida"});
     }
 
     async delete(req: Request, res: Response): Promise<void> {

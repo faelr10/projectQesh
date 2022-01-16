@@ -13,5 +13,6 @@ export const UserRoutes = Router()
 
 UserRoutes.post('/', (req, res) => UserController.create(req, res))
 UserRoutes.get('/', (req, res) => UserController.find(req, res));
-UserRoutes.delete('/:id',(req, res) => UserController.delete(req, res));
 UserRoutes.get('/:id', (req, res) => UserController.findById(req, res));
+UserRoutes.put('/:id', (req, res) => UserController.update(req, res));
+UserRoutes.delete('/:id',(req, res) => UserController.delete(req, res));
