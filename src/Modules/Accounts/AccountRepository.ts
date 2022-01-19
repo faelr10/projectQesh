@@ -32,4 +32,4 @@ export default class AccountRepository extends BaseRepository<Account> implement
     async findById(id): Promise<Object> {
         return await this.getRepo().findByIds(id)
     }
-}
+}  
